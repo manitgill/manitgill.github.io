@@ -1,0 +1,2047 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Manit's Web</title>
+
+<style>
+
+/* =========================================================
+   MANIT'S WEB
+   PREMIUM PERSONAL WEBSITE
+   ========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#050505;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+    width:7px;
+}
+
+::-webkit-scrollbar-track{
+    background:#050505;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#292929;
+    border-radius:20px;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
+button{
+    font-family:inherit;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+.container{
+    width:90%;
+    max-width:1250px;
+    margin:auto;
+}
+
+.page{
+    display:none;
+    min-height:100vh;
+    padding-top:80px;
+}
+
+.page.active{
+    display:block;
+}
+
+.section{
+    padding:100px 0;
+}
+
+.section-title{
+    font-size:60px;
+    letter-spacing:-4px;
+    margin-bottom:15px;
+}
+
+.section-subtitle{
+    color:#777;
+    font-size:17px;
+    margin-bottom:50px;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:80px;
+    z-index:9999;
+
+    background:rgba(5,5,5,.78);
+    backdrop-filter:blur(20px);
+
+    border-bottom:1px solid #171717;
+}
+
+.navbar{
+    width:90%;
+    max-width:1250px;
+    height:100%;
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:-1px;
+}
+
+.logo span{
+    color:#666;
+}
+
+.nav-links{
+    display:flex;
+    gap:5px;
+    list-style:none;
+}
+
+.nav-links button{
+    border:0;
+    background:transparent;
+    color:#777;
+
+    padding:11px 14px;
+    border-radius:10px;
+
+    cursor:pointer;
+    transition:.25s;
+}
+
+.nav-links button:hover,
+.nav-links button.active{
+    background:#151515;
+    color:white;
+}
+
+.menu{
+    display:none;
+
+    background:#111;
+    border:1px solid #292929;
+    color:white;
+
+    padding:10px 13px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* =========================
+   HOME
+========================= */
+
+.hero{
+    min-height:calc(100vh - 80px);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:70px;
+}
+
+.hero-content{
+    max-width:720px;
+}
+
+.eyebrow{
+    color:#666;
+    text-transform:uppercase;
+    letter-spacing:5px;
+    font-size:12px;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:clamp(55px,9vw,110px);
+    line-height:.88;
+    letter-spacing:-7px;
+    margin-bottom:30px;
+}
+
+.hero h1 span{
+    color:#555;
+}
+
+.hero-description{
+    max-width:650px;
+    color:#888;
+    font-size:19px;
+    line-height:1.8;
+}
+
+.buttons{
+    display:flex;
+    gap:13px;
+    margin-top:35px;
+    flex-wrap:wrap;
+}
+
+.primary,
+.secondary{
+    padding:15px 23px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.primary{
+    background:white;
+    color:black;
+    border:0;
+}
+
+.secondary{
+    background:#101010;
+    color:white;
+    border:1px solid #292929;
+}
+
+.primary:hover,
+.secondary:hover{
+    transform:translateY(-4px);
+}
+
+.secondary:hover{
+    border-color:#555;
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile-wrapper{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.profile{
+    width:350px;
+    height:350px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(circle,#202020,#080808 70%);
+
+    border:1px solid #333;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#555;
+    font-size:18px;
+
+    position:relative;
+}
+
+.profile:before{
+    content:"";
+
+    position:absolute;
+
+    width:385px;
+    height:385px;
+
+    border-radius:50%;
+
+    border:1px solid #181818;
+
+    animation:spin 16s linear infinite;
+}
+
+.profile:after{
+    content:"";
+
+    position:absolute;
+
+    width:420px;
+    height:420px;
+
+    border-radius:50%;
+
+    border:1px dashed #111;
+
+    animation:spinReverse 25s linear infinite;
+}
+
+@keyframes spin{
+    from{transform:rotate(0deg)}
+    to{transform:rotate(360deg)}
+}
+
+@keyframes spinReverse{
+    from{transform:rotate(360deg)}
+    to{transform:rotate(0deg)}
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-top:40px;
+}
+
+.stat{
+    padding:28px;
+
+    background:#0c0c0c;
+    border:1px solid #191919;
+
+    border-radius:18px;
+
+    transition:.3s;
+}
+
+.stat:hover{
+    transform:translateY(-6px);
+    border-color:#383838;
+}
+
+.stat-number{
+    font-size:35px;
+    font-weight:900;
+}
+
+.stat-label{
+    color:#666;
+    margin-top:7px;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.card{
+    background:#0b0b0b;
+    border:1px solid #1b1b1b;
+    border-radius:20px;
+    padding:35px;
+    transition:.3s;
+}
+
+.card:hover{
+    border-color:#363636;
+    transform:translateY(-4px);
+}
+
+.card h3{
+    font-size:27px;
+    margin-bottom:18px;
+}
+
+.card p{
+    color:#888;
+    line-height:1.8;
+}
+
+.info-list{
+    list-style:none;
+}
+
+.info-list li{
+    padding:15px 0;
+    border-bottom:1px solid #191919;
+    color:#777;
+}
+
+.info-list li:last-child{
+    border-bottom:0;
+}
+
+.info-list strong{
+    color:white;
+}
+
+/* =========================
+   INTERESTS
+========================= */
+
+.interests{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:14px;
+}
+
+.interest{
+    min-height:180px;
+
+    background:#0c0c0c;
+    border:1px solid #1b1b1b;
+
+    border-radius:18px;
+    padding:25px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+    transition:.3s;
+}
+
+.interest:hover{
+    transform:translateY(-7px);
+    border-color:#444;
+}
+
+.interest-number{
+    color:#444;
+    font-size:13px;
+}
+
+.interest h3{
+    font-size:19px;
+}
+
+.interest p{
+    color:#666;
+    font-size:14px;
+    line-height:1.5;
+}
+
+/* =========================
+   JOURNEY
+========================= */
+
+.timeline{
+    position:relative;
+    max-width:900px;
+}
+
+.timeline:before{
+    content:"";
+
+    position:absolute;
+    left:15px;
+    top:0;
+    bottom:0;
+
+    width:1px;
+    background:#242424;
+}
+
+.timeline-item{
+    position:relative;
+    padding-left:55px;
+    margin-bottom:45px;
+}
+
+.timeline-dot{
+    position:absolute;
+    left:9px;
+    top:5px;
+
+    width:13px;
+    height:13px;
+
+    border-radius:50%;
+    background:white;
+
+    box-shadow:0 0 0 5px #111;
+}
+
+.timeline-year{
+    color:#555;
+    font-size:13px;
+    letter-spacing:2px;
+    margin-bottom:7px;
+}
+
+.timeline-item h3{
+    font-size:23px;
+    margin-bottom:8px;
+}
+
+.timeline-item p{
+    color:#777;
+    line-height:1.7;
+}
+
+/* =========================
+   ENTERTAINMENT
+========================= */
+
+.entertainment{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.entertainment-card{
+    min-height:260px;
+
+    background:
+        linear-gradient(135deg,#111,#080808);
+
+    border:1px solid #1c1c1c;
+    border-radius:22px;
+
+    padding:35px;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.entertainment-card:before{
+    content:"";
+
+    position:absolute;
+    width:180px;
+    height:180px;
+
+    right:-80px;
+    top:-80px;
+
+    border:1px solid #222;
+    border-radius:50%;
+}
+
+.entertainment-label{
+    color:#555;
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+.entertainment-card h3{
+    font-size:40px;
+    margin:25px 0 12px;
+}
+
+.entertainment-card p{
+    color:#777;
+    line-height:1.7;
+}
+
+/* =========================
+   PROJECTS
+========================= */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.project{
+    overflow:hidden;
+
+    background:#0c0c0c;
+    border:1px solid #1b1b1b;
+
+    border-radius:20px;
+
+    transition:.35s;
+}
+
+.project:hover{
+    transform:translateY(-8px);
+    border-color:#444;
+}
+
+.project-image{
+    height:200px;
+
+    background:
+        linear-gradient(135deg,#191919,#070707);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#444;
+    font-size:14px;
+    letter-spacing:3px;
+}
+
+.project-body{
+    padding:25px;
+}
+
+.project-body h3{
+    margin-bottom:10px;
+}
+
+.project-body p{
+    color:#777;
+    line-height:1.6;
+    font-size:14px;
+}
+
+.tag{
+    display:inline-block;
+
+    margin-top:18px;
+
+    padding:7px 11px;
+
+    border-radius:20px;
+
+    background:#171717;
+    color:#777;
+
+    font-size:11px;
+}
+
+/* =========================
+   MORE INFORMATION
+========================= */
+
+.more-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.more-card{
+    padding:35px;
+
+    background:#0b0b0b;
+    border:1px solid #1b1b1b;
+
+    border-radius:20px;
+}
+
+.more-card h3{
+    font-size:25px;
+    margin-bottom:15px;
+}
+
+.more-card p{
+    color:#777;
+    line-height:1.8;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.contact-card{
+    background:#0c0c0c;
+    border:1px solid #1b1b1b;
+    border-radius:20px;
+    padding:35px;
+}
+
+.contact-card h3{
+    font-size:27px;
+    margin-bottom:25px;
+}
+
+.contact-row{
+    padding:17px 0;
+    border-bottom:1px solid #191919;
+}
+
+.contact-row:last-child{
+    border-bottom:0;
+}
+
+.contact-label{
+    color:#555;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:11px;
+    margin-bottom:6px;
+}
+
+.contact-value{
+    color:#aaa;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    border-top:1px solid #181818;
+    padding:45px 0;
+    text-align:center;
+    color:#555;
+}
+
+.footer-title{
+    color:white;
+    font-size:24px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:950px){
+
+    .nav-links{
+        display:none;
+
+        position:absolute;
+
+        top:80px;
+        left:0;
+
+        width:100%;
+
+        background:#080808;
+
+        padding:12px;
+
+        border-bottom:1px solid #222;
+
+        flex-direction:column;
+    }
+
+    .nav-links.show{
+        display:flex;
+    }
+
+    .nav-links button{
+        width:100%;
+        text-align:left;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        justify-content:center;
+    }
+
+    .hero-description{
+        margin:auto;
+    }
+
+    .buttons{
+        justify-content:center;
+    }
+
+    .stats,
+    .interests{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .projects{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .about-grid,
+    .entertainment,
+    .more-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .section-title{
+        font-size:43px;
+    }
+
+    .hero h1{
+        font-size:58px;
+        letter-spacing:-5px;
+    }
+
+    .profile{
+        width:240px;
+        height:240px;
+    }
+
+    .profile:before{
+        width:270px;
+        height:270px;
+    }
+
+    .profile:after{
+        width:295px;
+        height:295px;
+    }
+
+    .stats,
+    .interests,
+    .projects{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+<div class="navbar">
+
+    <div class="logo">
+        Manit<span>'s</span> Web
+    </div>
+
+    <button class="menu" onclick="toggleMenu()">
+        Menu
+    </button>
+
+    <nav class="nav-links">
+
+        <button class="active"
+                onclick="openPage('home',this)">
+            Home
+        </button>
+
+        <button onclick="openPage('about',this)">
+            About
+        </button>
+
+        <button onclick="openPage('interests',this)">
+            Interests
+        </button>
+
+        <button onclick="openPage('journey',this)">
+            Journey
+        </button>
+
+        <button onclick="openPage('projects',this)">
+            Projects
+        </button>
+
+        <button onclick="openPage('entertainment',this)">
+            Entertainment
+        </button>
+
+        <button onclick="openPage('more',this)">
+            More
+        </button>
+
+        <button onclick="openPage('contact',this)">
+            Contact
+        </button>
+
+    </nav>
+
+</div>
+
+</header>
+
+
+<!-- =========================================================
+     HOME
+========================================================= -->
+
+<section id="home" class="page active">
+
+<div class="container hero">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            Welcome to my website
+        </div>
+
+        <h1>
+            I'm<br>
+            Manit<span>.</span>
+        </h1>
+
+        <p class="hero-description">
+            Math lover. Tech lover.
+            I enjoy coding, building websites,
+            experimenting with AI and electronics,
+            and creating things with technology.
+        </p>
+
+        <div class="buttons">
+
+            <button class="primary"
+                    onclick="openPage('about')">
+                Discover More
+            </button>
+
+            <button class="secondary"
+                    onclick="openPage('projects')">
+                My Projects
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="profile-wrapper">
+
+        <div class="profile">
+
+            <!--
+                PHOTO GOES HERE
+
+                Later replace "Your Photo"
+                with:
+
+                <img src="photo.jpg"
+                style="width:100%;
+                height:100%;
+                object-fit:cover;">
+            -->
+
+            Your Photo
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="container">
+
+<div class="stats">
+
+    <div class="stat">
+        <div class="stat-number">13</div>
+        <div class="stat-label">Years Old</div>
+    </div>
+
+    <div class="stat">
+        <div class="stat-number">8</div>
+        <div class="stat-label">Class</div>
+    </div>
+
+    <div class="stat">
+        <div class="stat-number">70+</div>
+        <div class="stat-label">Movies & Series</div>
+    </div>
+
+    <div class="stat">
+        <div class="stat-number">∞</div>
+        <div class="stat-label">Ideas</div>
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section id="about" class="page">
+
+<div class="container section">
+
+    <h2 class="section-title">
+        About Me
+    </h2>
+
+    <p class="section-subtitle">
+        A little introduction to who I am.
+    </p>
+
+
+    <div class="about-grid">
+
+        <div class="card">
+
+            <h3>
+                Who is Manit?
+            </h3>
+
+            <p>
+                I'm Manit, a Class 8 student and a huge
+                fan of mathematics and technology.
+                I like learning how things work and,
+                more importantly, trying to build things
+                myself.
+            </p>
+
+            <br>
+
+            <p>
+                From websites and programming to ESP32,
+                AI and game development, I'm always
+                interested in experimenting with something
+                new.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                Quick Info
+            </h3>
+
+            <ul class="info-list">
+
+                <li>
+                    <strong>Name:</strong> Manit Gill
+                </li>
+
+                <li>
+                    <strong>Age:</strong> 13
+                </li>
+
+                <li>
+                    <strong>Class:</strong> 8th
+                </li>
+
+                <li>
+                    <strong>Personality:</strong>
+                    Math Lover & Tech Lover
+                </li>
+
+                <li>
+                    <strong>Future Goal:</strong>
+                    Software Engineer
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     INTERESTS
+========================================================= -->
+
+<section id="interests" class="page">
+
+<div class="container section">
+
+    <h2 class="section-title">
+        My Interests
+    </h2>
+
+    <p class="section-subtitle">
+        The things I genuinely enjoy exploring.
+    </p>
+
+
+    <div class="interests">
+
+
+        <div class="interest">
+
+            <div class="interest-number">
+                01
+            </div>
+
+            <h3>
+                Programming
+            </h3>
+
+            <p>
+                Writing code and turning ideas
+                into working projects.
+            </p>
+
+        </div>
+
+
+        <div class="interest">
+
+            <div class="interest-number">
+                02
+            </div>
+
+            <h3>
+                Web Development
+            </h3>
+
+            <p>
+                Creating websites and experimenting
+                with modern interfaces.
+            </p>
+
+        </div>
+
+
+        <div class="interest">
+
+            <div class="interest-number">
+                03
+            </div>
+
+            <h3>
+                Artificial Intelligence
+            </h3>
+
+            <p>
+                Exploring AI and understanding
+                what technology can do.
+            </p>
+
+        </div>
+
+
+        <div class="interest">
+
+            <div class="interest-number">
+                04
+            </div>
+
+            <h3>
+                ESP32
+            </h3>
+
+            <p>
+                Electronics, microcontrollers,
+                Wi-Fi and hardware projects.
+            </p>
+
+        </div>
+
+
+        <div class="interest">
+
+            <div class="interest-number">
+                05
+            </div>
+
+            <h3>
+                Game Development
+            </h3>
+
+            <p>
+                Creating games and exploring
+                interactive worlds.
+            </p>
+
+        </div>
+
+
+        <div class="interest">
+
+            <div class="interest-number">
+                06
+            </div>
+
+            <h3>
+                Mathematics
+            </h3>
+
+            <p>
+                One of the subjects I genuinely
+                enjoy.
+            </p>
+
+        </div>
+
+
+        <div class="interest">
+
+            <div class="interest-number">
+                07
+            </div>
+
+            <h3>
+                Technology
+            </h3>
+
+            <p>
+                Computers, software, hardware
+                and everything tech.
+            </p>
+
+        </div>
+
+
+        <div class="interest">
+
+            <div class="interest-number">
+                08
+            </div>
+
+            <h3>
+                Experiments
+            </h3>
+
+            <p>
+                Trying ideas just to see
+                what happens.
+            </p>
+
+        </div>
+
+
+        <div class="interest">
+
+            <div class="interest-number">
+                09
+            </div>
+
+            <h3>
+                Learning
+            </h3>
+
+            <p>
+                Learning something new whenever
+                possible.
+            </p>
+
+        </div>
+
+
+        <div class="interest">
+
+            <div class="interest-number">
+                10
+            </div>
+
+            <h3>
+                Building
+            </h3>
+
+            <p>
+                Turning concepts into actual
+                projects.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     JOURNEY
+========================================================= -->
+
+<section id="journey" class="page">
+
+<div class="container section">
+
+    <h2 class="section-title">
+        My Journey
+    </h2>
+
+    <p class="section-subtitle">
+        Still at the beginning. Just getting started.
+    </p>
+
+
+    <div class="timeline">
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                START
+            </div>
+
+            <h3>
+                Curiosity
+            </h3>
+
+            <p>
+                Started becoming interested in computers,
+                technology and understanding how things work.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                LEARNING
+            </div>
+
+            <h3>
+                Coding
+            </h3>
+
+            <p>
+                Began exploring programming and discovering
+                how code can turn an idea into something real.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                BUILDING
+            </div>
+
+            <h3>
+                Web Development
+            </h3>
+
+            <p>
+                Started creating websites and experimenting
+                with HTML, CSS and JavaScript.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                HARDWARE
+            </div>
+
+            <h3>
+                ESP32 & Electronics
+            </h3>
+
+            <p>
+                Started experimenting with ESP32,
+                Wi-Fi projects and electronics.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                FUTURE
+            </div>
+
+            <h3>
+                Software Engineer
+            </h3>
+
+            <p>
+                The long-term goal is to become a
+                software engineer and keep building
+                bigger things.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     PROJECTS
+========================================================= -->
+
+<section id="projects" class="page">
+
+<div class="container section">
+
+    <h2 class="section-title">
+        Projects
+    </h2>
+
+    <p class="section-subtitle">
+        Things I've built, explored or want to build.
+    </p>
+
+
+    <div class="projects">
+
+
+        <div class="project">
+
+            <div class="project-image">
+                WEB PROJECT
+            </div>
+
+            <div class="project-body">
+
+                <h3>
+                    Manit's Web
+                </h3>
+
+                <p>
+                    My personal website built as my own
+                    space on the internet.
+                </p>
+
+                <span class="tag">
+                    HTML / CSS / JS
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="project">
+
+            <div class="project-image">
+                ESP32
+            </div>
+
+            <div class="project-body">
+
+                <h3>
+                    ESP32 Projects
+                </h3>
+
+                <p>
+                    Wi-Fi based experiments and custom
+                    web interfaces using ESP32.
+                </p>
+
+                <span class="tag">
+                    ELECTRONICS
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="project">
+
+            <div class="project-image">
+                GAME DEV
+            </div>
+
+            <div class="project-body">
+
+                <h3>
+                    Game Development
+                </h3>
+
+                <p>
+                    Exploring game development and
+                    creating interactive experiences.
+                </p>
+
+                <span class="tag">
+                    GAME DEV
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="project">
+
+            <div class="project-image">
+                AI
+            </div>
+
+            <div class="project-body">
+
+                <h3>
+                    AI Experiments
+                </h3>
+
+                <p>
+                    Exploring artificial intelligence
+                    and new possibilities with AI.
+                </p>
+
+                <span class="tag">
+                    AI
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="project">
+
+            <div class="project-image">
+                FUTURE
+            </div>
+
+            <div class="project-body">
+
+                <h3>
+                    Future Projects
+                </h3>
+
+                <p>
+                    More ideas are waiting to be turned
+                    into actual projects.
+                </p>
+
+                <span class="tag">
+                    COMING SOON
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="project">
+
+            <div class="project-image">
+                MORE
+            </div>
+
+            <div class="project-body">
+
+                <h3>
+                    More Coming
+                </h3>
+
+                <p>
+                    This website will grow as new
+                    projects are created.
+                </p>
+
+                <span class="tag">
+                    FUTURE
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     ENTERTAINMENT
+========================================================= -->
+
+<section id="entertainment" class="page">
+
+<div class="container section">
+
+    <h2 class="section-title">
+        Entertainment
+    </h2>
+
+    <p class="section-subtitle">
+        What I watch and play when I'm not building things.
+    </p>
+
+
+    <div class="entertainment">
+
+
+        <div class="entertainment-card">
+
+            <div class="entertainment-label">
+                Favourite Anime
+            </div>
+
+            <h3>
+                Naruto
+            </h3>
+
+            <p>
+                The one and only favourite anime.
+            </p>
+
+            <br>
+
+            <p>
+                Favourite Character:
+                <strong>Kakashi Hatake</strong>
+            </p>
+
+        </div>
+
+
+        <div class="entertainment-card">
+
+            <div class="entertainment-label">
+                Gaming
+            </div>
+
+            <h3>
+                Free Fire
+            </h3>
+
+            <p>
+                One of the games I enjoy playing.
+            </p>
+
+        </div>
+
+
+        <div class="entertainment-card">
+
+            <div class="entertainment-label">
+                Movies & Series
+            </div>
+
+            <h3>
+                70+
+            </h3>
+
+            <p>
+                I've completed more than 70 movies
+                and web series.
+            </p>
+
+        </div>
+
+
+        <div class="entertainment-card">
+
+            <div class="entertainment-label">
+                Marvel
+            </div>
+
+            <h3>
+                Completed
+            </h3>
+
+            <p>
+                The Marvel universe is another major
+                part of my watchlist.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     MORE INFORMATION
+========================================================= -->
+
+<section id="more" class="page">
+
+<div class="container section">
+
+    <h2 class="section-title">
+        More Information
+    </h2>
+
+    <p class="section-subtitle">
+        A deeper look at Manit.
+    </p>
+
+
+    <div class="more-grid">
+
+
+        <div class="more-card">
+
+            <h3>
+                The Tech Side
+            </h3>
+
+            <p>
+                Technology isn't just something I use.
+                I like understanding it, experimenting
+                with it and creating things with it.
+            </p>
+
+        </div>
+
+
+        <div class="more-card">
+
+            <h3>
+                The Math Side
+            </h3>
+
+            <p>
+                Mathematics is one of my favourite
+                subjects and one of the things I genuinely
+                enjoy learning.
+            </p>
+
+        </div>
+
+
+        <div class="more-card">
+
+            <h3>
+                Current Focus
+            </h3>
+
+            <p>
+                Coding, web development, AI, ESP32,
+                electronics and game development.
+            </p>
+
+        </div>
+
+
+        <div class="more-card">
+
+            <h3>
+                Future Goal
+            </h3>
+
+            <p>
+                Become a software engineer and continue
+                building increasingly ambitious projects.
+            </p>
+
+        </div>
+
+
+        <div class="more-card">
+
+            <h3>
+                Beyond Coding
+            </h3>
+
+            <p>
+                When I'm away from technology,
+                I enjoy anime, movies, web series
+                and gaming.
+            </p>
+
+        </div>
+
+
+        <div class="more-card">
+
+            <h3>
+                This Website
+            </h3>
+
+            <p>
+                This website is designed to keep growing.
+                New projects, photos, achievements and
+                information can be added anytime.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section id="contact" class="page">
+
+<div class="container section">
+
+    <h2 class="section-title">
+        Contact
+    </h2>
+
+    <p class="section-subtitle">
+        Find me through my links.
+    </p>
+
+
+    <div class="contact-grid">
+
+
+        <div class="contact-card">
+
+            <h3>
+                Contact Details
+            </h3>
+
+
+            <div class="contact-row">
+
+                <div class="contact-label">
+                    Email
+                </div>
+
+                <div class="contact-value">
+                    your@email.com
+                </div>
+
+            </div>
+
+
+            <div class="contact-row">
+
+                <div class="contact-label">
+                    Instagram
+                </div>
+
+                <div class="contact-value">
+                    @yourusername
+                </div>
+
+            </div>
+
+
+            <div class="contact-row">
+
+                <div class="contact-label">
+                    GitHub
+                </div>
+
+                <div class="contact-value">
+                    github.com/yourusername
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <h3>
+                Let's Connect
+            </h3>
+
+            <p style="
+                color:#777;
+                line-height:1.8;
+                margin-bottom:25px;
+            ">
+                More links and social profiles can be
+                added here later.
+            </p>
+
+            <button class="primary"
+                    onclick="window.location.href='mailto:your@email.com'">
+                Send Email
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+<div class="container">
+
+    <div class="footer-title">
+        Manit’s Web
+    </div>
+
+    <p>
+        Math Lover • Tech Lover • Future Software Engineer
+    </p>
+
+    <br>
+
+    <p>
+        © 2026 Manit’s Web
+    </p>
+
+</div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+/* =========================
+   PAGE SYSTEM
+========================= */
+
+function openPage(pageId, clickedButton){
+
+    const pages =
+        document.querySelectorAll(".page");
+
+    pages.forEach(function(page){
+
+        page.classList.remove("active");
+
+    });
+
+
+    const selected =
+        document.getElementById(pageId);
+
+    if(selected){
+
+        selected.classList.add("active");
+
+    }
+
+
+    const buttons =
+        document.querySelectorAll(".nav-links button");
+
+    buttons.forEach(function(button){
+
+        button.classList.remove("active");
+
+    });
+
+
+    if(clickedButton){
+
+        clickedButton.classList.add("active");
+
+    }
+
+
+    document
+        .querySelector(".nav-links")
+        .classList.remove("show");
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+function toggleMenu(){
+
+    document
+        .querySelector(".nav-links")
+        .classList.toggle("show");
+
+}
+
+
+/* =========================
+   ESCAPE CLOSE MENU
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            document
+                .querySelector(".nav-links")
+                .classList.remove("show");
+
+        }
+
+    }
+);
+
+
+/* =========================
+   WELCOME MESSAGE
+========================= */
+
+console.log(
+    "Welcome to Manit's Web."
+);
+
+</script>
+
+</body>
+</html>
+```
